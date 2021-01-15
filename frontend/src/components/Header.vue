@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <a href="index.html"><img class="logo" src="../assets/images/logo.svg" alt="로고"></a>
+    <router-link to="/"><img class="logo" src="../assets/images/logo.svg" alt="로고"></router-link>
     <div class="page-title">Index</div>
     <button class="menu-btn">
       <div></div>
