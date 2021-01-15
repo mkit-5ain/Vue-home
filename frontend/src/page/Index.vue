@@ -84,11 +84,13 @@
           </div>
         </div>
       </div>
-      <div class="experience-btn fade-contents" style="position: relative;">
-        <a class="experience-more" href="experience.html">
-          <p class="title">다양한 경험을 통해 만든 <span>#결과물</span> 만나러 가실래요?</p>
-        </a>
-      </div>
+      <router-link to="/experience">
+        <div class="experience-btn fade-contents" style="position: relative;">
+          <div class="experience-more">
+            <p class="title">다양한 경험을 통해 만든 <span>#결과물</span> 만나러 가실래요?</p>
+          </div>
+        </div>
+      </router-link>
     </section>
   </div>
 </template>
