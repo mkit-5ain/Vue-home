@@ -2,11 +2,11 @@
   <div id="header">
     <router-link to="/"><img class="logo" src="../assets/images/logo.svg" alt="로고"></router-link>
     <div class="page-title">Index</div>
-    <button class="menu-btn">
+    <button class="menu-btn" @click="handle_toggle">
       <div></div>
       <div></div>
     </button>
-    <div class="menu-view">
+    <div class="menu-view" v-show="is_show">
       <div class="menu-dim"></div>
       <div class="menu-view-menubox">
         <ul class="menubox-list">
@@ -84,4 +84,18 @@
     }
   }
 </style>
-<script></script>
+<script>
+export default {
+  name: 'Header',
+  data: () => { // #1
+    return {
+      is_show: false
+    }
+  },
+  methods:{
+    handle_toggle: function(){
+      this.is_show = !this.is_show; // #2, #3
+    },
+  }
+}
+</script>
