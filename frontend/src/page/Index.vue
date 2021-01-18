@@ -49,7 +49,8 @@
         </div>
         <div class="inner-wrap">
           <div class="info-contents fade-contents calendar">
-            <p>시간이 이렇게나 빨리 흘러갔다는 건 왜 달력의 마지막 장에서야 와닿게 될까요.</p>
+            <p>시간이 이렇게나 빨리 흘러갔다는 건</p>
+            <p>왜 달력의 마지막 장에서야 와닿게 될까요.</p>
           </div>
           <div class="info-contents fade-contents">
             <p>작년과는 다른 사람이 되겠다고</p>
@@ -87,7 +88,10 @@
       <router-link to="/experience">
         <div class="experience-btn fade-contents" style="position: relative;">
           <div class="experience-more">
-            <p class="title">다양한 경험을 통해 만든 <span>#결과물</span> 만나러 가실래요?</p>
+            <div class="title">
+              <p>다양한 경험을 통해 만든 </p>
+              <p><span>#결과물</span> 만나러 가실래요?</p>
+            </div>
           </div>
         </div>
       </router-link>
@@ -106,3 +110,328 @@ export default {
   // }
 }
 </script>
+<style lang="scss" scoped>
+$primary-color: #6C63FF;
+$secondary-color: #4FBC9D;
+.intro-wrap {
+  position: relative;
+  padding-top: 300px;
+  overflow: hidden;
+  transition: 1s cubic-bezier(0.32, 0.18, 0.26, 0.84);
+  .prologue-wrap {
+    .prologue {
+      position: relative;
+      height: 270px;
+      line-height: 250px;
+      font-size: 300px;
+      font-family: 'sarabun';
+      text-transform: uppercase;
+      transition: 1s cubic-bezier(0.74, 0.51, 0.51, 1.26);
+      animation: 0.8s introTextAnimation forwards;
+      opacity: 0;
+      &.effect-dot {
+        width: 960px;
+        .inner-dot {
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+          width: 47px;
+          height: 47px;
+          border-radius: 100%;
+          background: $primary-color;
+          animation: 1.5s dotAnimation forwards;
+          animation-delay: 1s;
+          transition: 1s cubic-bezier(0.32, 0.18, 0.26, 0.84);
+          opacity: 0;
+          box-shadow: 1px 1px 1px 0px #151414
+        }
+      }
+      &.effect-line {
+        animation-delay: 0.2s;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -100px;
+          left: 570px;
+          width: 500px;
+          height: 150px;
+          border-radius: 100px;
+          background: RGB(108, 99, 255, 0.8);
+          box-shadow: 1px 1px 1px 0px #151414;
+          transition: 1s ease-in-out;
+          animation: 0.5s TopBottomAnimation forwards;
+          animation-delay: 2s;
+          opacity: 0;
+        }
+      }
+      &.effect-blur {
+        animation-delay: 0.4s;
+      }
+    }
+    @keyframes introTextAnimation {
+      from {
+        opacity: 0;
+        transform: translate(-500px, -100px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-80px, 0px);
+      }
+    }
+    @media screen and (max-width: 750px) {
+      @keyframes introTextAnimation {
+        from {
+          opacity: 0;
+          transform: translate(-300px, -100px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-20px, 0px);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .intro-wrap {
+    .prologue-wrap {
+      .prologue {
+        height: auto;
+        line-height: 20vw;
+        font-size: 20vw;
+        &.effect-dot {
+          width: 68vw;
+          .inner-dot {
+            width: 5vw;
+            height: 5vw;
+          }
+        }
+        &.effect-line {
+          &::after {
+            bottom: -10vw;
+            left: 60px;
+            width: 65vw;
+            height: 16vw;
+          }
+        }
+      }
+    }
+  }
+}
+.info-wrap {
+  position: relative;
+  width: 1400px;
+  margin: 400px auto 0px auto;
+  .inner-wrap {
+    display: flex;
+    padding: 250px 0px;
+    justify-content: space-between;
+    .info-contents {
+      width: 550px;
+      font-size: 30px;
+      text-align: center;
+    }
+    .fade-contents {
+      line-height: 1.5;
+      transform: translate(0px, 50px);
+      &.active {
+        animation: fade-contents 2s forwards;
+      }
+    }
+    @keyframes fade-contents {
+      from {
+        transform: translate(0px, 50px);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(0px, -10px);
+      }
+      to {
+        transform: translate(0px, 0px);
+        opacity: 1;
+      }
+    }
+  }
+  .calendar {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      right: -220px;
+      width: 300px;
+      height: 237px;
+      z-index: -1;
+      background: url('~@/assets/images/calendar.svg') 0px 0px no-repeat;
+      background-size: 300px;
+      opacity: 0.3;
+      transform: rotate(-5deg);
+    }
+  }
+  .last-year {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: 0px;
+      width: 250px;
+      height: 157px;
+      z-index: -1;
+      background: url('~@/assets/images/2020.svg') 0px 0px no-repeat;
+      background-size: 250px;
+      opacity: 0.7;
+      transform: rotate(5deg);
+    }
+  }
+  .this-year {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: -135px;
+      width: 300px;
+      height: 237px;
+      z-index: -1;
+      background: url('~@/assets/images/2021.svg') 0px 0px no-repeat;
+      background-size: 300px;
+      transform: rotate(-5deg);
+    }
+  }
+  .daily {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -110px;
+      right: -200px;
+      width: 300px;
+      height: 237px;
+      z-index: -1;
+      background: url('~@/assets/images/daily.svg') 0px 0px no-repeat;
+      background-size: 300px;
+      opacity: 0.7;
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .info-wrap {
+    width: auto;
+    margin: 0px;
+    .inner-wrap {
+      flex-direction: column;
+      padding: 100px 15px;
+      .calendar {
+        &::before {
+          bottom: 25px;
+          right: 50px;
+          width: 100px;
+          height: 80px;
+          background-size: 100px;
+        }
+      }
+      .last-year {
+        &::before {
+          top: -120px;
+          left: 100px;
+          width: 150px;
+          height: 95px;
+          background-size: 150px;
+        }
+      }
+      .daily {
+        &::before {
+          bottom: -130px;
+          right: 0px;
+          width: 150px;
+          height: 120px;
+          background-size: 150px;
+        }
+      }
+      .this-year::before {
+        top: -120px;
+        left: auto;
+        width: 150px;
+        height: 110px;
+        background-size: 150px;
+      }
+      .info-contents {
+        width: auto;
+        margin: 100px 0px;
+        font-size: 5.5vw;
+      }
+    }
+  }
+}
+.experience-btn {
+  &.fade-contents {
+    transform: translate(0px, 50px);
+    &.active {
+      animation: fade-contents 2s forwards;
+    }
+  }
+  .experience-more {
+    position: relative;
+    display: block;
+    width: 650px;
+    height: 100px;
+    line-height: 104px;
+    margin: 200px auto 400px auto;
+    border-radius: 50px;
+    box-shadow: 20px 20px 40px #d9d9d9, -20px -20px 40px #fff;
+    font-weight: bold;
+    font-size: 22px;
+    span {
+      position: relative;
+      color: $secondary-color;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 5px;
+        width: 67px;
+        height: 15px;
+        background: $secondary-color;
+        opacity: 0.2;
+      }
+    }
+    .title {
+      padding-left: 80px;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 43px;
+        right: 60px;
+        width: 46px;
+        height: 12px;
+        background: url('~@/assets/images/icon-arrow-right.png') 0px 0px no-repeat;
+        &:hover {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .experience-btn {
+    .experience-more {
+      width: calc(100% - 30px);
+      height: 100px;
+      line-height: normal;
+      font-size: 20px;
+      text-align: center;
+      .title {
+        padding: 24px 0px;
+        &::after {
+          // top: 58px;
+          right: 20px;
+          width: 30px;
+          height: 8px;
+          background-size: 30px;
+        }
+      }
+    }
+  }
+}
+</style>

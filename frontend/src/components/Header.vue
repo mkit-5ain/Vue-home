@@ -70,6 +70,7 @@
       font-weight: bold;
     }
     .fixed-info {
+      display: none;
       position: fixed;
       top: 100px;
       right: 45px;
@@ -80,6 +81,38 @@
         transform: rotate(360deg);
         animation: textRotate 5s 1s infinite;
         animation-fill-mode: forwards;
+      }
+    }
+  }
+  @media screen and (max-width: 750px) {
+    #header {
+      width: calc(100% - 10vw);
+      margin: 5vw;
+      .logo {
+        width: 30px;
+        height: 30px;
+      }
+      .page-title {
+        font-size: 14px;
+        line-height: 30px;
+      }
+      .menu-btn {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #000;
+        div {
+          height: 1px;
+          &:nth-child(1) {
+            top: 9px;
+            left: calc(50% - 7px);
+            width: 14px;
+          }
+          &:nth-child(2) {
+            top: 19px;
+            left: calc(50% - 7px);
+            width: 14px;
+          }
+        }
       }
     }
   }
