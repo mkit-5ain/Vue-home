@@ -51,11 +51,11 @@
 </template>
 <style lang="scss">
   #header {
+    display: flex;
     position: fixed;
     top: 0px;
     left: 0px;
     z-index: 10;
-    display: flex;
     width: calc(100% - 60px);
     margin: 30px;
     justify-content: space-between;
