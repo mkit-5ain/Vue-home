@@ -2,17 +2,29 @@
   <div id="header">
     <router-link to="/"><img class="logo" src="../assets/images/logo.svg" alt="로고"></router-link>
     <div class="page-title">Index</div>
-    <button class="menu-btn" @click="handle_toggle">
+    <button class="menu-btn" @click="toggle">
       <div></div>
       <div></div>
     </button>
-    <div class="menu-view" v-show="is_show">
-      <div class="menu-dim"></div>
+    <div class="menu-view" :class="{ active:isActive }">
+      <div class="menu-dim" @click="toggle"></div>
       <div class="menu-view-menubox">
         <ul class="menubox-list">
-          <li class="list index"><a href="index.html">Index</a></li>
-          <li class="list exp">Experience</li>
-          <li class="list cont"><a href="contact.html">Contact</a></li>
+          <li class="list index" @click="toggle">
+            <router-link to="/">
+              <span>Index</span>
+            </router-link>
+          </li>
+          <li class="list exp" @click="toggle">
+            <router-link to="/experience">
+              <span>Experience</span>
+            </router-link>
+          </li>
+          <li class="list cont" @click="toggle">
+            <router-link to="/contact">
+              <span>Contact</span>
+            </router-link>
+          </li>
         </ul>
       </div>
       <div class="menu-theme">
@@ -120,15 +132,15 @@
 <script>
 export default {
   name: 'Header',
-  data: () => { // #1
+  data: () => {
     return {
-      is_show: false
+      isActive: false
     }
   },
   methods:{
-    handle_toggle: function(){
-      this.is_show = !this.is_show; // #2, #3
-    },
+    toggle() {
+      this.isActive = !this.isActive;
+    }
   }
 }
 </script>
